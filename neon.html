@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neon Ball Game</title>
+    <link rel="stylesheet" href="neon.css">
+</head>
+
+<body>
+
+    <main class="game-container">
+        <h1 class="title">NEON <span>BALL</span></h1>
+        <p class="subtitle">Click the balls. Multiply your score!</p>
+
+        <div class="info">
+            <div class="info-box">Score: <span id="score">0</span></div>
+            <div class="info-box">Time: <span id="timer">30</span>s</div>
+            <div class="info-box">Balls: <span id="ballCount">0</span></div>
+        </div>
+
+        <div class="mode-selection">
+            <h3>🎮 SELECT GAME MODE</h3>
+
+            <div class="mode-buttons">
+                <button type="button" class="mode-btn active" data-mode="classic">
+                    ⚡ CLASSIC
+                    <span>30 Seconds</span>
+                </button>
+
+                <button type="button" class="mode-btn" data-mode="challenge">
+                    🔥 CHALLENGE
+                    <span>60 Seconds</span>
+                </button>
+
+                <button type="button" class="mode-btn" data-mode="unlimited">
+                    ♾️ UNLIMITED
+                    <span>No Time Limit</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="sound-control">
+            <button id="soundBtn" type="button">
+                🔊 SOUND ON
+
+            </button>
+        </div>
+
+        <!-- SETTINGS BUTTON -->
+        <div class="settings-control">
+            <button id="settingsBtn" type="button">
+                ⚙️ SETTINGS
+            </button>
+        </div>
+
+        <div class="achievement-control">
+            <button id="achievementsBtn" type="button">
+                🏆 ACHIEVEMENTS
+            </button>
+        </div>
+
+        <div id="achievementsPanel" class="achievements-panel">
+            <div class="achievements-header">
+                <h2>🏆 ACHIEVEMENTS</h2>
+
+                <button id="closeAchievementsBtn" type="button">X</button>
+            </div>
+
+            <p id="achievementProgress">0 Achievements Unlocked</p>
+
+            <div id="achievementsList" class="achievements-list"></div>
+        </div>
+
+        <div class="game-controls">
+            <button id="pauseBtn" type="button" disabled>
+                ⏸️ PAUSE
+            </button>
+        </div>
+
+        <div id="gameArea" class="game-area">
+            <div id="startScreen" class="start-screen">
+                <h2 id="screenTitle">Ready to Play?</h2>
+                <p id="screenMessage">Click start and multiply the balls!</p>
+
+                <div id="finalScore" class="final-score">0</div>
+                <div id="recordBadge" class="record-badge">🏆 NEW HIGH SCORE!</div>
+
+                <button id="startBtn" type="button">START GAME</button>
+            </div>
+
+            <div id="powerUpHUD" class="power-up-hud">
+                <div class="power-up-info">
+                    <span id="powerUpName">⚡ POWER-UP</span>
+                    <span id="powerUpTimer">0s</span>
+                </div>
+
+                <div class="power-up-progress-bg">
+                    <div id="powerUpProgress" class="power-up-progress"></div>
+                </div>
+            </div>
+        </div>
+
+        <p class="instructions">
+            🖱️ Click or tap a ball to multiply it
+        </p>
+
+        <!-- SETTINGS MENU -->
+        <div id="settingsOverlay" class="settings-overlay">
+
+            <div class="settings-menu">
+
+                <div class="settings-header">
+                    <h2>⚙️ SETTINGS </h2>
+                    <button id="closeSettingsBtn" type="button">X</button>
+                </div>
+
+                <div class="settings-content">
+
+                    <h3>🔊 SOUND SETTING</h3>
+
+                    <div class="setting-item">
+                        <span>Sound Effects</span>
+                        <button class="setting-toggle active" id="volumeToggle">ON</button>
+
+                    </div>
+
+                    <div class="setting-item">
+                        <span>Master Volume</span>
+                        <span id="masterVolumeValue">75%</span>
+                    </div>
+                    <input type="range" id="masterVolume" min="0" max="100" value="75">
+
+                    <div class="setting-item">
+                        <span>Music Volume</span>
+                        <span id="musicVolumeValue">75%</span>
+                    </div>
+                    <input type="range" id="musicVolume" min="0" max="100" value="75">
+
+                    <div class="setting-item">
+                        <span>SFX Volume</span>
+                        <span id="sfxVolumeValue">75%</span>
+                    </div>
+                    <input type="range" id="sfxVolume" min="0" max="100" value="75">
+
+                    <h3> 🎮 GAMEPLAY</h3>
+
+                    <div class="setting-item">
+                        <span>Vibration Mode</span>
+                        <button class="setting-toggle active" id="vibrationToggle">ON</button>
+                    </div>
+
+                    <div class="setting-item">
+                        <span>Screen Shake</span>
+                        <button class="setting-toggle active" id="shakeToggle">ON</button>
+                    </div>
+
+                    <div class="setting-item">
+                        <span>Particle Effects</span>
+                        <button class="setting-toggle active" id="particlesToggle">ON</button>
+                    </div>
+
+                    <div class="setting-item">
+                        <span>Ball Trail</span>
+                        <button class="setting-toggle active" id="trailToggle">ON</button>
+                    </div>
+
+                    <div class="setting-item">
+                        <span>Auto Pause</span>
+                        <button class="setting-toggle active" id="autoPauseToggle">ON</button>
+                    </div>
+
+                    <h3>✨ GRAPHICS</h3>
+
+                    <div class="setting-item">
+                        <span>Graphics Quality</span>
+                        <select id="graphicsQuality">
+                            <option value="low">LOW</option>
+                            <option value="medium" selected> MEDIUM</option>
+                            <option value="high">HIGH</option>
+                        </select>
+                    </div>
+
+                    <div class="setting-item">
+                        <span>Neon Effects</span>
+                        <button class="setting-toggle active" id="neonToggle">ON</button>
+                    </div>
+
+                    <h3>🔥 DIFFICULTY MODE</h3>
+
+                    <div class="difficulty-buttons">
+                        <button class="difficulty-btn" data-mode="easy">EASY</button>
+                        <button class="difficulty-btn active" data-mode="medium">MEDIUM</button>
+                        <button class="difficulty-btn" data-mode="hard">HARD</button>
+                    </div>
+
+                    <div class="settings-footer">
+                        <button id="resetSettingsBtn" type="button">↻ RESET SETTINGS</button>
+                        <button id="howToPlayBtn" type="button">❔ HOW TO PLAY</button>
+                        <button id="aboutGameBtn" type="button">ℹ️ ABOUT GAME</button>
+                       <button id="restartGameBtn" onclick="alert('Button working!')" class="settings-btn">
+    <i class="fas fa-redo"></i>
+    Restart Game
+</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </main>
+
+    <script src="neon.js"></script>
+</body>
+
+</html>

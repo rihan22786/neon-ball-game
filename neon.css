@@ -1,0 +1,264 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    color: white;
+    background: radial-gradient(circle at top, #172554, #030712 65%);
+}
+
+.game-container {
+    width: 100%;
+    max-width: 750px;
+    text-align: center;
+}
+
+.title {
+    font-size: clamp(35px, 7vw, 60px);
+    letter-spacing: 4px;
+    color: #22d3ee;
+    text-shadow: 0 0 12px #06b6d4, 0 0 30px #0891b2;
+}
+
+.title span {
+    color: #e879f9;
+    text-shadow: 0 0 12px #d946ef, 0 0 30px #a21caf;
+}
+
+.subtitle {
+    color: #cbd5e1;
+    margin: 12px 0 25px;
+}
+
+.info {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.info-box {
+    flex: 1;
+    padding: 12px 6px;
+    background: #0f172acc;
+    border: 1px solid #22d3ee;
+    border-radius: 12px;
+    box-shadow: 0 0 12px #0891b244;
+    font-weight: bold;
+}
+
+.info-box span {
+    color: #67e8f9;
+}
+
+.game-area {
+    position: relative;
+    width: 100%;
+    height: 420px;
+    overflow: hidden;
+    border: 2px solid #22d3ee;
+    border-radius: 20px;
+    background: radial-gradient(ellipse, #111c40, #020617);
+    box-shadow: 0 0 20px #06b6d455, inset 0 0 25px #7c3aed22;
+}
+
+.start-screen {
+    position: absolute;
+    inset: 0;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
+    padding: 20px;
+    background: #020617dd;
+}
+
+.start-screen h2 {
+    color: #67e8f9;
+    font-size: clamp(24px, 5vw, 35px);
+    text-shadow: 0 0 12px #06b6d4;
+}
+
+.start-screen p {
+    color: #cbd5e1;
+}
+
+button {
+    padding: 14px 28px;
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+    letter-spacing: 1px;
+    border: 1px solid #67e8f9;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #0891b2, #7c3aed);
+    cursor: pointer;
+    box-shadow: 0 0 18px #7c3aed88;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+button:hover {
+    transform: scale(1.06);
+    box-shadow: 0 0 28px #22d3ee99;
+}
+
+.ball {
+    position: absolute;
+    width: 38px;
+    height: 38px;
+    padding: 0;
+    border-radius: 50%;
+    border: 2px solid #ffffffaa;
+    cursor: pointer;
+    animation: ballGlow 1.5s ease-in-out infinite alternate;
+    transform: translate(-50%, -50%);
+    touch-action: manipulation;
+}
+
+.ball.cyan {
+    background: #06b6d4;
+    box-shadow: 0 0 10px #06b6d4, 0 0 25px #06b6d4;
+}
+
+.ball.pink {
+    background: #e879f9;
+    box-shadow: 0 0 10px #e879f9, 0 0 25px #e879f9;
+}
+
+.ball.green {
+    background: #22c55e;
+    box-shadow: 0 0 10px #22c55e, 0 0 25px #22c55e;
+}
+
+.ball.yellow {
+    background: #facc15;
+    box-shadow: 0 0 10px #facc15, 0 0 25px #facc15;
+}
+
+.ball.orange {
+    background: #fb923c;
+    box-shadow: 0 0 10px #fb923c, 0 0 25px #fb923c;
+}
+
+.ball.purple {
+    background: #a855f7;
+    box-shadow: 0 0 10px #a855f7, 0 0 25px #a855f7;
+}
+
+.instructions {
+    margin-top: 20px;
+    color: #94a3b8;
+    font-size: 14px;
+}
+
+@keyframes ballGlow {
+    from {
+        filter: brightness(0.85);
+    }
+    to {
+        filter: brightness(1.4);
+    }
+}
+
+@media (max-width: 500px) {
+    .game-area {
+        height: 380px;
+    }
+
+    .info-box {
+        font-size: 13px;
+        padding: 10px 3px;
+    }
+
+    .ball {
+        width: 34px;
+        height: 34px;
+    }
+}
+
+
+/* ARCADE GAME UPGRADES */
+
+.game-area {
+    cursor: crosshair;
+    touch-action: none;
+}
+
+.ball {
+    width: 18px;
+    height: 18px;
+    border: none;
+    padding: 0;
+    pointer-events: none;
+    transition: none;
+    animation: none;
+    transform: translate(-50%, -50%);
+}
+
+.paddle {
+    position: absolute;
+    bottom: 12px;
+    left: 50%;
+    width: 110px;
+    height: 13px;
+    border-radius: 20px;
+    transform: translateX(-50%);
+    background: #22d3ee;
+    box-shadow: 0 0 10px #22d3ee, 0 0 25px #22d3ee;
+    pointer-events: none;
+}
+
+.ball-trail {
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #67e8f9;
+    box-shadow: 0 0 12px #22d3ee;
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+/* ========== PAUSE / RESUME BUTTON ========== */
+
+.game-controls {
+    display: flex;
+    justify-content: center;
+    margin: 15px 0;
+}
+
+#pauseBtn {
+    padding: 12px 26px;
+    border: 1px solid #00f7ff;
+    border-radius: 10px;
+    background: rgba(0, 247, 255, 0.10);
+    color: #00f7ff;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: 0.25s ease;
+    box-shadow: 0 0 12px rgba(0, 247, 255, 0.15);
+}
+
+#pauseBtn:hover:not(:disabled) {
+    background: #00f7ff;
+    color: #080816;
+    box-shadow: 0 0 20px rgba(0, 274, 255, 0.5);
+}
+
+#pause:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
