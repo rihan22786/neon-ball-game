@@ -22,3 +22,6 @@ A futuristic neon arcade ball-catching game built using HTML, CSS, and JavaScrip
 **Rihan Malik**
 
 GitHub: [@rihan22786](https://github.com/rihan22786)
+## 📸 Game Screenshot
+
+![Neon Ball Game](neon-game-screenshot.png)
